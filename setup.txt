@@ -1,0 +1,47 @@
+[🎯 UCF CRIME 성능 테스트]
+python  ucf_test.py --test-mode "test" --test-list "C:/Myoung_Chul_KIM/VadCLIP(AAAI_2024)/VadCLIP-main/list/ucf_CLIP_rgbtest.csv" --gt-path "C:/Myoung_Chul_KIM/VadCLIP(AAAI_2024)/VadCLIP-main/list/gt_ucf.npy" --gt-segment-path "C:/Myoung_Chul_KIM/VadCLIP(AAAI_2024)/VadCLIP-main/list/gt_segment_ucf.npy" --gt-label-path "C:/Myoung_Chul_KIM/VadCLIP(AAAI_2024)/VadCLIP-main/list/gt_label_ucf.npy"
+
+[🎯 UCF CRIME 카테고리별 GT 분할]
+python make_video_gt_ucf.py
+python make_category_gt_ucf.py
+
+
+[🎯 UCF CRIME 카테고리별 성능 테스트]
+python ucf_test.py --test-mode "Category_test" --category-gt-dir "C:/Myoung_Chul_KIM/VadCLIP(AAAI_2024)/VadCLIP-main/list/category_GT/"
+
+[📈 UCF CRIME 카테고리별 데이터 분포 확인]
+python  ucf_test.py --test-mode "gt_distribution" --category-gt-dir "C:/Myoung_Chul_KIM/VadCLIP(AAAI_2024)/VadCLIP-main/list/category_GT/"
+
+[🎥 실시간 비디오 이상 행동 탐지 모드]
+python  ucf_test.py --test-mode "test_real_time" --video-path "D:/UCF_Crimes/Videos/Explosion/Explosion052_x264.mp4" --video_save_path "D:/UCF_Crimes/Test_result/explostionExplosion052_x264(VADCLIP).mp4"
+
+[📈 이상치 점수 그래프 생성 모드]
+python  ucf_test.py --test-mode "plot_score" --score-video-save-path "D:/UCF_Crimes/UCF_Crimes_plot_test" --test-list "C:/Myoung_Chul_KIM/VadCLIP(AAAI_2024)/VadCLIP-main/list/ucf_CLIP_rgbtest.csv" --annotation-path "C:/Myoung_Chul_KIM/VadCLIP(AAAI_2024)/VadCLIP-main/list/Temporal_Anomaly_Annotation.txt"
+
+
+
+
+[메모장]
+python ucf_test.py --test_mode
+
+1870275024
+
+python eval_derain.py --data_dir D:/ETRI_dataset/frame --model D:/ViWS-Net-main/model/best.pth --output Results
+
+python eval_w_SCM.py --customize "A photo needs underexposure artifact reduction" --input "D:/Rain,Snow,Haze frames/Rain_frames/C00_115_0001/000051.jpg" --steps 50 --output "D:/AutoDIR-main/output" --ckpt "D:/AutoDIR-main/pretrained_model/autodir.ckpt" --cfg-text 1 --config "configs/generate.yaml"
+
+!python eval_w_SCM.py --customize "A photo needs underexposure artifact reduction" --input /content/drive/MyDrive/test_image/raindrop1.jpg --output results --ckpt checkpoints/autodir.ckpt
+
+Step1: "A photo needs underexposure artifact reduction"
+Step2: "A photo needs rain artifact reduction"
+Step3: 
+
+Abuse005_x264__5.npy -> ndarray (59*512)
+Abuse008_x264__5.npy -> ndarray (525*512)
+
+
+16개 마다 feature extraction을 수행
+
+Abuse09 video -> 30sec -> 900frame -> 56.25segment / 62
+
+Abuse26 video -> 144sec -> 4,320frame -> 270segment / 124
